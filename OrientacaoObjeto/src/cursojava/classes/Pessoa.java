@@ -53,6 +53,8 @@ public class Pessoa {
 		this.nomepai = nomepai;
 	}
 	
-	
+	public boolean pessoaMaiorIdade() {
+		return idade >= 18;
+	}
 
 }
