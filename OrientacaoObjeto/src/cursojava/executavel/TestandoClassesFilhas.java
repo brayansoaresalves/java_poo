@@ -33,7 +33,18 @@ public class TestandoClassesFilhas {
 		
 		System.out.println(aluno.msgMaiorIdade());
 		
+		System.out.println("Salario é = " + aluno.salario());
+		System.out.println("Salario do diretor é: " + diretor.salario());
+		System.out.println("Salario do secretario é = " + secretario.salario());
 		
+		testando(aluno);
+		testando(diretor);
+		testando(secretario);
+	}
+	
+	public static void testando(Pessoa pessoa) {
+		System.out.println("Essa pessoa é demais: " + pessoa.getNome() + " é o salario é: "
+				+ pessoa.salario());
 	}
 
 }

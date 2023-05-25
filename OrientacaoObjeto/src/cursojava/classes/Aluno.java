@@ -108,6 +108,12 @@ public class Aluno extends Pessoa{
 		return this.pessoaMaiorIdade() ? "Oba o aluno " + this.nome + " é maior de idade. " : 
 			"Oba o aluno " + this.nome + " é menor de idade. ";
 	}
+
+	@Override
+	public double salario() {
+		// TODO Auto-generated method stub
+		return 1590.00;
+	}
 	
 }
 

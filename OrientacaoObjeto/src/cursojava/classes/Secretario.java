@@ -1,10 +1,13 @@
 package cursojava.classes;
 
-public class Secretario extends Pessoa{
+import cursojava.interfaces.PermitirAcesso;
+
+public class Secretario extends Pessoa implements PermitirAcesso{
 	
 	private String registro;
 	private String nivelCargo;
 	private String experiencia;
+
 	
 	public String getRegistro() {
 		return registro;
@@ -28,6 +31,17 @@ public class Secretario extends Pessoa{
 	@Override
 	public String toString() {
 		return "Secretario [registro=" + registro + ", nivelCargo=" + nivelCargo + ", experiencia=" + experiencia + "]";
+	}
+	@Override
+	public double salario() {
+		// TODO Auto-generated method stub
+		return 1800.80 * 0.9;
+	}
+	
+	@Override
+	public boolean autenticar(String usuario, String senha) {
+		// TODO Auto-generated method stub
+		return usuario.equals("admin") && senha.equals("admin");
 	}
 	
 	

@@ -8,7 +8,9 @@ import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
+import cursojava.classes.Secretario;
 import cursojava.constantes.StatusAluno;
+import cursojava.interfaces.PermitirAcesso;
 
 public class PrimeiraClasseJava {
 	
@@ -17,7 +19,9 @@ public class PrimeiraClasseJava {
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
 		
-		if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
+		
+
+		if (new Secretario().autenticar(login, senha)) {
 		
 		List<Aluno> alunos = new ArrayList<>();
 		
