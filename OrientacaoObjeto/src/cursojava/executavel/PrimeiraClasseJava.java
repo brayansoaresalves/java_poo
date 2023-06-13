@@ -1,27 +1,39 @@
 package cursojava.executavel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
 import cursojava.classes.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
-import cursojava.interfaces.PermitirAcesso;
+import cursojava.exceccao.ExcecaoProcessarNota;
 
 public class PrimeiraClasseJava {
 	
+	/**
+	 * @param args
+	 * @throws ExcecaoProcessarNota 
+	 */
+	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
+		
+		try {
+		
+		
+		lerArquivo();
 		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
-		
-		
 
-		if (new Secretario().autenticar(login, senha)) {
+		if (new FuncaoAutenticacao(new Secretario(login, senha)).autenticar()) {
 		
 		List<Aluno> alunos = new ArrayList<>();
 		
@@ -30,8 +42,8 @@ public class PrimeiraClasseJava {
 		for (int qtd = 1; qtd <= 5; qtd++) {
 		
 		String nome = JOptionPane.showInputDialog("Qual o nome do Aluno " + qtd + " ?");
-		/*String idade = JOptionPane.showInputDialog("Qual é a idade?");
-		String dataNascimento = JOptionPane.showInputDialog("Qual a data de Nascimento?");
+		String idade = JOptionPane.showInputDialog("Qual é a idade?");
+		/*String dataNascimento = JOptionPane.showInputDialog("Qual a data de Nascimento?");
 		String rg = JOptionPane.showInputDialog("Informe o registro geral?");
 		String cpf = JOptionPane.showInputDialog("Qual o CPF?");
 		String mae = JOptionPane.showInputDialog("Qual o nome da mae?");
@@ -45,8 +57,8 @@ public class PrimeiraClasseJava {
 		Aluno aluno = new Aluno();
 		
 		aluno.setNome(nome);
-		/*aluno.setIdade(Integer.valueOf(idade));
-		aluno.setRegistroGeral(rg);
+		aluno.setIdade(Integer.valueOf(idade));
+		/*aluno.setRegistroGeral(rg);
 		aluno.setNumerocpf(cpf);
 		aluno.setNomemae(mae);
 		aluno.setNomepai(pai);
@@ -121,7 +133,44 @@ public class PrimeiraClasseJava {
 					" com a media de = " + aluno.getMediaNota());
 		}
 		
+	}else {
+		JOptionPane.showMessageDialog(null, "Acesso não permitido");
 	}
+		
+	}catch (NumberFormatException e) {
+		//e.printStackTrace();
+		
+		StringBuilder saida = new StringBuilder();
+		e.printStackTrace();
+		System.out.println("Mensagem " + e.getMessage());
+		
+		for (int i = 0; i<e.getStackTrace().length; i++) {
+			saida.append("\nClasse de erro " + e.getStackTrace()[i].getClassName());
+			saida.append("\nMetodo de erro " + e.getStackTrace()[i].getMethodName());
+			saida.append("\nLinha de erro" + e.getStackTrace()[i].getLineNumber());
+			saida.append("\nLinha de erro" + e.getClass().getName());
+			
+			
+		}
+		
+		JOptionPane.showMessageDialog(null, "Erro de conversão de numero " + saida.toString());
+	}catch (NullPointerException e) {
+		JOptionPane.showMessageDialog(null, "opa um null pointer exception " + e.getClass());
+	}catch (ExcecaoProcessarNota e) {
+		e.printStackTrace();
+		JOptionPane.showMessageDialog(null, "Erro na criação do arquivo");
+	}finally {
+		JOptionPane.showMessageDialog(null,"Você ainda é nutella em JAVA");
+	}
+	}
+	
+	public static void lerArquivo () throws ExcecaoProcessarNota {
+		try {
+			File file = new File("c://line.txt");
+			Scanner sc = new Scanner(file);
+		}catch (FileNotFoundException e) {
+			throw new ExcecaoProcessarNota(e.getMessage());
+		}
 	}
 
 }
