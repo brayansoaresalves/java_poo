@@ -68,13 +68,17 @@ public class PrimeiraClasseJava {
 		aluno.setNomeEscola(nomeEscola);*/
 		
 		for (int i =1; i<=1; i++) {
+
+			double[] notas = new double[i];
 			String nomeDisciplina = JOptionPane.showInputDialog("Nome da Disciplina " + i + " ?");
 			String nota = JOptionPane.showInputDialog("Nota da Disciplina " + i +" ?");
+
+			notas[i] = Double.valueOf(nota);
 			
 			Disciplina disciplina = new Disciplina();
 			
 			disciplina.setDisciplina(nomeDisciplina);
-			disciplina.setNota(Double.valueOf(nota));
+			disciplina.setNota(notas);
 			
 			aluno.getDisciplinas().add(disciplina);
 			
