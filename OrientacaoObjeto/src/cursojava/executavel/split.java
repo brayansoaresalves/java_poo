@@ -3,7 +3,6 @@ package cursojava.executavel;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.print.DocFlavor.STRING;
 
 public class split {
 
