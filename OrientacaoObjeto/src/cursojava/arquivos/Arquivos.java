@@ -28,7 +28,7 @@ public class Arquivos {
 
 
 
-        File arquivo = new File("C:\\Users\\guilhermem\\Documents\\arquivo.txt");
+        File arquivo = new File("C:\\Users\\guilhermem\\Documents\\arquivo.csv");
         
         FileWriter escrever_no_arquivo = new FileWriter(arquivo);
 
